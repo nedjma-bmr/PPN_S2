@@ -1,11 +1,9 @@
-#define _GLIBCXX_USE_CXX11_ABI 0
 #include <iostream>
 #include <unordered_map>
 #include <string>
 #include <vector>
 
 using namespace std;
- 
 struct Graphe
 {
     // table de hashage qui va stocker le graphe
