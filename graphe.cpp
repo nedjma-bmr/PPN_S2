@@ -27,4 +27,28 @@ vector<string> Graphe::List_voisins(string sommet)
     return list;
 }
 
-
+//---------- Ajouter une une arrête au graphe
+void Graphe::AddArc(string sommet1, string sommet2)
+{
+    ///--- pour le premier sommet
+    auto iter = graphe.find(sommet1);
+    if (iter != graphe.end())
+    {
+        (*iter).second.push_back(sommet2);
+    }
+    else
+    {
+        graphe.insert({sommet1, {sommet2}});
+    }
+    
+    ///--- pour le deuxième sommet
+    auto iter2 = graphe.find(sommet2);
+    if (iter2 != graphe.end())
+    {
+        (*iter2).second.push_back(sommet1);
+    }
+    else
+    {
+        graphe.insert({sommet2, {sommet1}});
+    }
+}
