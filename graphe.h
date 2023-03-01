@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unordered_map>
+#include <map>
 #include <string>
 #include <vector>
 
@@ -17,4 +18,9 @@ struct Graphe
 
     // Ajouter une une arrête
     void AddArc(string sommet1, string sommet2);
+
+    // Calculer les degrés des sommets
+    map<string,int> calculate_degrees();
+     
+
 };

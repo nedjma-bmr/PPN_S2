@@ -40,7 +40,7 @@ void Graphe::AddArc(string sommet1, string sommet2)
     {
         graphe.insert({sommet1, {sommet2}});
     }
-    
+
     ///--- pour le deuxième sommet
     auto iter2 = graphe.find(sommet2);
     if (iter2 != graphe.end())
@@ -52,3 +52,14 @@ void Graphe::AddArc(string sommet1, string sommet2)
         graphe.insert({sommet2, {sommet1}});
     }
 }
+
+
+//------ Calculer les degrés des sommets d'un graphe
+    map<string,int> Graphe::calculate_degrees(){
+        map<string,int> degrees;
+        for( auto iter = graphe.begin() ; iter != graphe.end(); ++iter){
+            degrees[(*iter).first] = List_voisins((*iter).first).size();
+        }
+        return degrees;
+    }
+       

@@ -50,4 +50,26 @@ int main()
     {
         cout << e << endl;
     }
+
+    //calculer les degrés des sommets du graphe
+    cout << "lise des degrés de sommets du graphe" << endl;
+    for (auto e : s.calculate_degrees())
+    {
+        cout << "sommet:" << e.first<< " " << "degré:" << e.second << endl;
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
