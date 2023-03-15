@@ -57,6 +57,14 @@ int main()
     {
         cout << "sommet:" << e.first<< " " << "degré:" << e.second << endl;
     }
+
+
+    //caluculer l'ordre de la dégenerescence du graphe
+    cout << "L'ordre de dégenerescence du graphe" << endl;
+    for (string sommet :s.degeneracy_ordering()){
+        cout << sommet << endl;
+    }
+
     
 
 

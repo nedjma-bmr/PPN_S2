@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 struct Graphe
@@ -21,6 +22,9 @@ struct Graphe
 
     // Calculer les degrés des sommets
     map<string,int> calculate_degrees();
+
+    // Calculer l'ordre de dégenerescence 
+    vector<string> degeneracy_ordering();
      
 
 };

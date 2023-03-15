@@ -53,13 +53,40 @@ void Graphe::AddArc(string sommet1, string sommet2)
     }
 }
 
-
-//------ Calculer les degrés des sommets d'un graphe
-    map<string,int> Graphe::calculate_degrees(){
-        map<string,int> degrees;
-        for( auto iter = graphe.begin() ; iter != graphe.end(); ++iter){
-            degrees[(*iter).first] = List_voisins((*iter).first).size();
-        }
-        return degrees;
+//--------  Calculer les degrés des sommets d'un graphe
+map<string, int> Graphe::calculate_degrees()
+{
+    map<string, int> degrees;
+    for (auto iter = graphe.begin(); iter != graphe.end(); ++iter)
+    {
+        degrees[(*iter).first] = List_voisins((*iter).first).size();
     }
-       
+    return degrees;
+}
+
+//--------  Calculer l'ordre de dégenerescence
+vector<string> Graphe::degeneracy_ordering()
+{
+    vector<string> ordering;
+    map<string, int> degrees = (*this).calculate_degrees();
+   // stocker le map dans un vecteur
+    vector<pair<string, int>> Vecteur_map (degrees.begin(), degrees.end());
+
+    // ordonner le vecteur selon la deuxième valeur
+    sort(Vecteur_map.begin(), Vecteur_map.end(), [](const auto& droite, const auto& gauche) {
+        return droite.second < gauche.second;
+    });
+    for (auto iter = degrees.begin(); iter != degrees.end(); ++iter)
+    {
+        ordering.push_back((*iter).first);
+        for (string s : List_voisins((*iter).first))
+        {
+            degrees[s] -= 1;
+        }
+        degrees.erase((*iter).first);
+        
+    }
+    return ordering;
+}
+
+
